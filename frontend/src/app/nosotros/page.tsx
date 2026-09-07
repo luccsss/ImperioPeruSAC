@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Nosotros", robots: { index: false, follow: false } };
+export default function AboutPage() { return <div className="container section prose-page"><p className="eyebrow">Consorcio Imperio Perú SAC</p><h1 className="display">Distribución especializada con responsabilidades claras.</h1><p className="lede">Imperio Perú distribuye y vende libros publicados por AMOLCA. La editorial, la fuente técnica del catálogo y el vendedor se representan como roles distintos para preservar trazabilidad y transparencia.</p><div className="prose-columns"><section><h2>AMOLCA</h2><p>Editorial de las obras y posible fuente de metadatos o materiales autorizados.</p></section><section><h2>Imperio Perú</h2><p>Distribuidor y vendedor responsable de precio, stock, promoción, contenido comercial y publicación local.</p></section></div></div>; }
+

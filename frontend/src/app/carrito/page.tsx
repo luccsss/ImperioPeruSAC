@@ -1,0 +1,7 @@
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { formatMoney } from "@/lib/money";
+import type { Money } from "@/lib/types";
+type CartItem = { slug: string; title: string; price: Money; quantity: number };
+export default function CartPage() { const [items, setItems] = useState<CartItem[]>([]); useEffect(() => { queueMicrotask(() => setItems(JSON.parse(localStorage.getItem("imperio-cart-v1") ?? "[]") as CartItem[])); }, []); const total = items.reduce((sum, item) => sum + item.price.amount * item.quantity, 0); return <div className="container section-tight"><p className="eyebrow">Compra de libros · USD</p><h1 className="heading">Carrito</h1>{items.length ? <div className="cart-layout"><div className="cart-items">{items.map((item) => <article className="cart-item" key={item.slug}><div><h2>{item.title}</h2><p className="muted">Cantidad: {item.quantity}</p></div><strong>{formatMoney({ amount: item.price.amount * item.quantity, currency: item.price.currency })}</strong></article>)}</div><aside className="cart-summary card"><h2>Resumen</h2><div><span>Subtotal USD</span><strong>{formatMoney({ amount: total, currency: "USD" })}</strong></div><p className="muted">Envío y pago se habilitarán en una fase comercial posterior.</p><button className="button button-primary" disabled>Checkout no habilitado</button></aside></div> : <div className="empty"><div><h2>Tu carrito está vacío</h2><Link className="button button-primary" href="/explorar">Explorar libros</Link></div></div>}</div>; }

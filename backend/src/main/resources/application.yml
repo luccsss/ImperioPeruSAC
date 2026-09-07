@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: imperio-peru-catalog
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/imperio_peru}
+    username: ${DATABASE_USERNAME:imperio}
+    password: ${DATABASE_PASSWORD:imperio-local-only}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        order_inserts: true
+        order_updates: true
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 12MB
+      max-request-size: 14MB
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  error:
+    include-message: never
+  forward-headers-strategy: framework
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /docs
+  api-docs:
+    path: /api-docs
+
+app:
+  security:
+    jwt-secret: ${JWT_SECRET:local-development-secret-change-before-production}
+    access-token-minutes: 60
+  bootstrap-admin:
+    email: ${ADMIN_EMAIL:admin@imperioperu.local}
+    password: ${ADMIN_PASSWORD:change-me-before-first-run}
+  media:
+    root: ${MEDIA_ROOT:./storage}
+  import:
+    max-rows: 10000
+    apply-enabled: ${IMPORT_APPLY_ENABLED:false}
+  demo-data:
+    enabled: ${APP_DEMO_DATA:false}
