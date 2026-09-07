@@ -28,8 +28,9 @@ Fecha de corte: 28 de agosto de 2026.
 ## Evidencia de verificación
 
 - Backend: compilación y 11 pruebas aprobadas localmente; una prueba adicional de migraciones PostgreSQL queda preparada y se omite automáticamente cuando Docker no está disponible.
-- Frontend: TypeScript estricto, ESLint, 4 pruebas de componentes y build de producción aprobados.
-- Responsive: 8 escenarios Playwright aprobados en móvil, tablet y escritorio; 1 escenario de menú se omite deliberadamente en escritorio.
+- Frontend: TypeScript estricto, ESLint, pruebas de componentes y build de producción aprobados.
+- Responsive: Playwright valida móvil, tablet y escritorio, incluido el mega menú por hover, sus cuatro líneas comerciales, las subcategorías laterales y los enlaces de vistas principales.
+- Integración continua: cada `push` o pull request hacia `main` ejecuta Maven, TypeScript, ESLint, Vitest, build de Next.js y Playwright en GitHub Actions.
 - Dependencias npm: auditoría con 0 vulnerabilidades conocidas al cierre.
 
 ## Decisiones que requieren aprobación posterior

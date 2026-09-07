@@ -68,6 +68,8 @@ El administrador inicial se crea una sola vez a partir de las variables de entor
 
 ## Verificación
 
+Cada `push` o pull request hacia `main` ejecuta automáticamente las validaciones de backend y frontend mediante GitHub Actions, incluyendo las pruebas responsivas del menú en Chromium.
+
 ```powershell
 cd backend
 mvn test
