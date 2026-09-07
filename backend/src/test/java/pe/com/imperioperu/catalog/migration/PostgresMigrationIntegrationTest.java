@@ -18,7 +18,7 @@ class PostgresMigrationIntegrationTest {
     @Test
     void migrationsCreateTheApprovedAdministrativeTaxonomy() throws Exception {
         var result = Flyway.configure().dataSource(postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword()).load().migrate();
-        assertThat(result.migrationsExecuted).isEqualTo(2);
+        assertThat(result.migrationsExecuted).isEqualTo(4);
         try (var connection = DriverManager.getConnection(postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword());
              var statement = connection.createStatement()) {
             try (var rows = statement.executeQuery("select root_type, count(*) from category where parent_id is not null group by root_type order by root_type")) {
